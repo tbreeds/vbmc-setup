@@ -5,6 +5,7 @@ id=${1:-1}
 . /root/config
 
 IPMI_PORT=$(( 9000 + $id ))
+TAP_IFACE="tap$(( id - 1))"
 
 LOCAL_HOSTNAME=$( printf "vbmc-%05d" $id )
 INSTANCE_ID=$( printf "iid-%010d" $id )
@@ -42,6 +43,7 @@ sed -e "s^@@LOCAL_HOSTNAME@@^${LOCAL_HOSTNAME}^g"	\
     -e "s^@@MAC_ADDRESS@@^${MAC_ADDRESS}^g"	\
     -e "s^@@BR_IFACE@@^${BR_IFACE}^g"	\
     -e "s^@@HV_TYPE@@^${HV_TYPE}^g"	\
+    -e "s^@@TAP_IFACE@@^${TAP_IFACE}^g"	\
 << "EO_DOMXML" > "${XML_FILE}"
 <domain type='@@HV_TYPE@@'>
   <name>@@LOCAL_HOSTNAME@@</name>
@@ -110,7 +112,7 @@ sed -e "s^@@LOCAL_HOSTNAME@@^${LOCAL_HOSTNAME}^g"	\
     <interface type='bridge'>
       <mac address='@@MAC_ADDRESS@@'/>
       <source bridge='@@BR_IFACE@@'/>
-      <target dev='tap0'/>
+      <target dev='@@TAP_IFACE@@'/>
       <model type='rtl8139'/>
       <alias name='net0'/>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/>
