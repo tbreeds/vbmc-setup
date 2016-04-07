@@ -1,0 +1,10 @@
+BR_IFACE=br0
+ETH_IFACE=eth0
+
+BASE_PATH=/opt/VBMC
+
+HV_TYPE=qemu
+LIBVIRT_URI='qemu:///system'
+
+IMAGE=cirros-0.3.4-x86_64-disk.img
+DISK_MASTER="${BASE_PATH}/${IMAGE}"
