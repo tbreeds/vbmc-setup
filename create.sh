@@ -9,7 +9,7 @@ TAP_IFACE="tap$(( id - 1))"
 
 LOCAL_HOSTNAME=$( printf "vbmc-%05d" $id )
 INSTANCE_ID=$( printf "iid-%010d" $id )
-MAC_ADDRESS=$( printf '00:60:2F:%02X:%02X:%02X\n' \
+MAC_ADDRESS=$( printf '02:00:00:%02X:%02X:%02X\n' \
 			$(( ($id >> 16) & 0xFF )) \
 			$(( ($id >>  8) & 0xFF )) \
 			$(( ($id >>  0) & 0xFF )) )
