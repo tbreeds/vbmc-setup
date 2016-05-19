@@ -1,8 +1,8 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 
 set -ex
 
-. /root/config
+. config
 
 apt-get update
 apt-get dist-upgrade -y

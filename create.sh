@@ -2,7 +2,7 @@
 
 id=${1:-1}
 
-. /root/config
+. config
 
 IPMI_PORT=$(( 9000 + $id ))
 TAP_IFACE="tap$(( id - 1))"
