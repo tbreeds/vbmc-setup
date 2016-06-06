@@ -47,7 +47,7 @@ EO_RESOLVCONF
 )
 (
     cd /tmp
-    export PIP_REQUIRE_VIRTUALENV=false  # Not for installing pip itself
+    unset PIP_REQUIRE_VIRTUALENV  # Not for installing pip itself
     wget https://bootstrap.pypa.io/get-pip.py
     python get-pip.py
     rm get-pip.py
